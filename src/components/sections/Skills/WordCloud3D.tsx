@@ -150,6 +150,7 @@ export function WordCloud3D({ mouseRef }: WordCloud3DProps) {
         {skills.map((skill) => (
           <span
             key={skill.name}
+            aria-label={`${skill.name} — ${levelLabels[skill.level]}`}
             style={{
               padding: "6px 14px",
               background: "var(--bg-card)",
@@ -158,7 +159,6 @@ export function WordCloud3D({ mouseRef }: WordCloud3DProps) {
               fontFamily: "var(--font-mono)",
               fontSize: `${0.7 + skill.level * 0.1}rem`,
               color: categoryColors[skill.category],
-              title: levelLabels[skill.level],
             }}
           >
             {skill.name}
