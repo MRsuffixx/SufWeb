@@ -1,46 +1,148 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ==============================================================================
+# T3 STACK (NEXT.JS, TYPESCRIPT, PRISMA, TAILWIND) MAXIMALIST .GITIGNORE
+# ==============================================================================
 
-# dependencies
-/node_modules
-/.pnp
+# ------------------------------------------------------------------------------
+# Bağımlılıklar (Dependencies)
+# ------------------------------------------------------------------------------
+node_modules/
+jspm_packages/
+web_modules/
+.pnp/
 .pnp.js
 
-# testing
-/coverage
+# ------------------------------------------------------------------------------
+# Next.js Derleme Çıktıları (Next.js Build Outputs)
+# ------------------------------------------------------------------------------
+.next/
+out/
+build/
+dist/
 
-# database
-/prisma/db.sqlite
-/prisma/db.sqlite-journal
-db.sqlite
+# ------------------------------------------------------------------------------
+# Ortam Değişkenleri ve Gizli Dosyalar (Env & Secrets)
+# ------------------------------------------------------------------------------
+# T3 Stack .env.example dosyasını commit etmeni ister ama asıl .env'leri yasaklar
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+*.env
+*.env.local
+.env.backup
+.env.sample
+shadow-db.env
 
-# next.js
-/.next/
-/out/
-next-env.d.ts
+# ------------------------------------------------------------------------------
+# Prisma & Veri Tabanı (Prisma & Databases)
+# ------------------------------------------------------------------------------
+/prisma/migrations/**/*.sql
+# Eğer sqlite kullanıyorsan lokal veri tabanı dosyaları:
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# ------------------------------------------------------------------------------
+# Loglar ve Hata Raporları (Logs & Diagnostics)
+# ------------------------------------------------------------------------------
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 .pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# local env files
-# do not commit any .env files to git, except for the .env.example file. https://create.t3.gg/en/usage/env-variables#using-environment-variables
-.env
-.env*.local
+# ------------------------------------------------------------------------------
+# Test ve Kapsam Raporları (Testing & Coverage)
+# ------------------------------------------------------------------------------
+coverage/
+.nyc_output/
+.playwright/
+playwright-report/
+test-results/
+.jest/
 
-# vercel
+# ------------------------------------------------------------------------------
+# Editörler ve IDE'ler (Editors & IDEs)
+# ------------------------------------------------------------------------------
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.history/
+*.code-workspace
+
+# WebStorm / IntelliJ / JetBrains
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ------------------------------------------------------------------------------
+# İşletim Sistemi Kalıntıları (OS Garbage)
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.VolumeIcon.icns
+.com.apple.timemachine.donotbackup
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]ownload/
+[Cc]ache/
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ------------------------------------------------------------------------------
+# Docker & Konteynerlar (Docker & Containers)
+# ------------------------------------------------------------------------------
+.dockerignore
+# Docker verilerinin yerelde kalması için (eğer docker-compose kullanıyorsan)
+.docker/
+docker-data/
+
+# ------------------------------------------------------------------------------
+# Diğer Araçlar ve Önbellekler (Caching & Build Tools)
+# ------------------------------------------------------------------------------
+.turbo/
+.eslintcache
+.stylelintcache
+.prettiercache
+.swc/
 .vercel
-
-# typescript
+.netlify
+.serverless/
+.sass-cache/
 *.tsbuildinfo
+.expo/
+.patch-entity
 
-# idea files
-.idea
+# ------------------------------------------------------------------------------
+# Geçici Dosyalar (Temporary Files)
+# ------------------------------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~
