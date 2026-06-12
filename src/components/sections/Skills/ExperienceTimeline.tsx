@@ -136,11 +136,7 @@ export function ExperienceTimeline() {
               }}
             >
               <div>
-                <GlitchText
-                  text={exp.role}
-                  tag="h3"
-                  className=""
-                  trigger={!reducedMotion}
+                <h3
                   style={{
                     fontFamily: "var(--font-display)",
                     fontWeight: 700,
@@ -148,8 +144,13 @@ export function ExperienceTimeline() {
                     color: "var(--text-primary)",
                     letterSpacing: "-0.02em",
                     marginBottom: "0.25rem",
-                  } as React.CSSProperties}
-                />
+                  }}
+                >
+                  <GlitchText
+                    text={exp.role}
+                    trigger={!reducedMotion}
+                  />
+                </h3>
                 <p
                   style={{
                     fontFamily: "var(--font-body)",

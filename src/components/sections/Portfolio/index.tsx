@@ -190,14 +190,13 @@ export function Portfolio() {
           {filtered.map((project, i) => (
             <div
               key={project.slug}
-              className="project-card-wrapper"
               role="listitem"
+              className="project-card-wrapper"
               style={{
                 // Featured projects span 2 columns on wide screens
                 gridColumn:
                   project.featured && i === 0 ? "span 2" : "span 1",
               }}
-              className="project-card-wrapper"
             >
               <ProjectCard project={project} />
             </div>
