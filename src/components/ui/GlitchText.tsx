@@ -7,10 +7,9 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$
 interface GlitchTextProps {
   text: string;
   className?: string;
-  trigger?: boolean; // if true, plays on mount; pass controlled bool to replay
-  speed?: number; // ms per character iteration
-  iterations?: number; // how many scramble iterations per character
-  tag?: keyof JSX.IntrinsicElements;
+  trigger?: boolean;
+  speed?: number;
+  iterations?: number;
 }
 
 export function GlitchText({
@@ -19,7 +18,6 @@ export function GlitchText({
   trigger = true,
   speed = 40,
   iterations = 4,
-  tag: Tag = "span",
 }: GlitchTextProps) {
   const [displayText, setDisplayText] = useState(text);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -56,8 +54,8 @@ export function GlitchText({
   }, [trigger, text, speed, iterations]);
 
   return (
-    <Tag className={className} aria-label={text}>
+    <span className={className} aria-label={text}>
       {displayText}
-    </Tag>
+    </span>
   );
 }
