@@ -104,7 +104,9 @@ export function HeroText({ onComplete }: HeroTextProps) {
         onComplete: () => onComplete?.(),
       });
 
-      tl.set([subline, ctas, scroll], { opacity: 0, y: 20 })
+      const animatableEls = [subline, ctas, scroll].filter(Boolean);
+
+      tl.set(animatableEls.length ? animatableEls : ".hero-ctas", { opacity: 0, y: 20 })
         .from(words, {
           opacity: 0,
           y: 60,
@@ -121,10 +123,11 @@ export function HeroText({ onComplete }: HeroTextProps) {
             ease: "power2.out",
           },
           "-=0.4",
-        )
-        .to(subline, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.2")
-        .to(ctas, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
-        .to(scroll, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.2");
+        );
+
+      if (subline) tl.to(subline, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.2");
+      if (ctas) tl.to(ctas, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
+      if (scroll) tl.to(scroll, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.2");
     }, containerRef);
 
     return () => ctx.revert();
